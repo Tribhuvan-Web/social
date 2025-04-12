@@ -191,8 +191,6 @@ const Login = () => {
             </p>
           </form>
         </div>
-
-        {/* Image Section */}
       </div>
     </div>
   );
