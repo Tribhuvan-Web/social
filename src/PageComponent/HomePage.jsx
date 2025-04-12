@@ -1,10 +1,11 @@
 import React from "react";
 import SideBar from "../homeComponent/SideBar";
-import { Outlet, useMatch } from "react-router-dom";
+import { Outlet, useLocation, useMatch } from "react-router-dom";
 import HomeRight from "../homeComponent/HomeRight";
 
 const HomePage = () => {
   const isHome = useMatch("/");
+  const location = useLocation();
 
   return (
     <div className="px-5 bg-black">
@@ -24,9 +25,11 @@ const HomePage = () => {
         </div>
 
         {/* Right Section */}
-        <div className="hidden lg:block lg:w-3/12 relative top-0">
-          <HomeRight />
-        </div>
+        {location.pathname === "/" && (
+          <div className="hidden lg:block lg:w-3/12 relative top-0">
+            <HomeRight />
+          </div>
+        )}
       </div>
     </div>
   );
