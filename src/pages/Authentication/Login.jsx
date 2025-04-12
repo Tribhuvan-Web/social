@@ -56,30 +56,24 @@ const Login = () => {
   return (
     <div className="min-h-screen p-4 bg-gradient-to-br from-black to-gray-900 flex justify-center items-center">
       <div className="w-full max-w-4xl mx-auto flex flex-col sm:flex-row shadow-2xl rounded-xl overflow-hidden bg-gray-800">
-        <div className="hidden sm:flex w-1/2 bg-gradient-to-br from-[#2295E5] to-[#45C3F3] items-center justify-center p-8">
-          <div className="flex flex-col items-center text-center space-y-6">
+        <div className="hidden sm:block w-1/2 relative bg-gradient-to-br from-[#2295E5]/90 to-[#45C3F3]/90">
+          <div className="absolute inset-0 flex items-center justify-center">
             <img
               src="/social.png"
               alt="Login illustration"
-              className="w-4/5 max-w-xs xl:max-w-sm hover:scale-105 transition-transform duration-300"
+              className="w-full h-full object-cover opacity-80"
             />
-            <div className="space-y-2">
-              <h2 className="text-white text-2xl xl:text-3xl font-bold drop-shadow-md">
-                Welcome Back!
-              </h2>
-              <p className="text-gray-100 text-sm xl:text-base">
-                Connect with our growing community
-              </p>
-            </div>
           </div>
         </div>
         {/* Form Section */}
         <div className="w-full sm:w-1/2 p-6 sm:p-8 lg:p-12">
           <form onSubmit={handleSubmit(LoginHandler)}>
-            <h1 className="text-center font-bold text-3xl mb-6 bg-gradient-to-r from-[#2295E5] to-[#45C3F3] bg-clip-text text-transparent">
+            <h1 className="text-center font-bold text-2xl mb-4 bg-gradient-to-r from-[#2295E5] to-[#45C3F3] bg-clip-text text-transparent">
               Welcome Back
+              <p className="text-gray-100 text-sm xl:text-base">
+                Connect with our growing community
+              </p>
             </h1>
-
             <div className="h-px w-full bg-gradient-to-r from-transparent via-[#2295E5] to-transparent mb-8"></div>
 
             <div className="flex flex-col gap-6">

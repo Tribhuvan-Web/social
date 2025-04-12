@@ -48,21 +48,21 @@ const Register = () => {
     <div className="min-h-screen p-4 bg-gradient-to-br from-black to-gray-900 flex justify-center items-center">
       <div className="w-full max-w-4xl mx-auto flex flex-col sm:flex-row shadow-2xl rounded-xl overflow-hidden bg-gray-800">
         {/* Image Section */}
-        <div className="hidden sm:flex w-1/2 bg-gradient-to-br from-[#2295E5] to-[#45C3F3] items-center justify-center p-8">
-          <div className="flex flex-col items-center text-center space-y-6">
+        <div className="hidden sm:block w-1/2 relative bg-gradient-to-br from-[#2295E5]/90 to-[#45C3F3]/90">
+          <div className="absolute inset-0">
             <img
               src="/social.png"
               alt="Registration illustration"
-              className="w-4/5 max-w-xs xl:max-w-sm hover:scale-105 transition-transform duration-300"
+              className="w-full h-full object-cover opacity-40"
             />
-            <div className="space-y-2">
-              <h2 className="text-white text-2xl xl:text-3xl font-bold drop-shadow-md">
-                Welcome to Our Community!
-              </h2>
-              <p className="text-gray-100 text-sm xl:text-base">
-                Join thousands of users already registered
-              </p>
-            </div>
+          </div>
+          <div className="relative z-10 h-full flex flex-col items-center justify-center text-center p-8 space-y-4">
+            <h2 className="text-white text-2xl font-bold drop-shadow-lg">
+              Welcome to Our Community!
+            </h2>
+            <p className="text-white font-semibold text-sm">
+              Join thousands of users already registered
+            </p>
           </div>
         </div>
         {/* Form Section */}
@@ -74,7 +74,7 @@ const Register = () => {
 
             <div className="h-px w-full bg-gradient-to-r from-transparent via-[#2295E5] to-transparent mb-8"></div>
 
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-2">
               {/* Username Field */}
               <div className="space-y-2">
                 <div className="flex items-center gap-2 mb-2">

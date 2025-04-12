@@ -1,7 +1,7 @@
 import React from "react";
 
 const CreateReels = () => {
-  return <div>This is the reels form.</div>;
+  return <div className="text-white">This is the create reels form.</div>;
 };
 
 export default CreateReels;

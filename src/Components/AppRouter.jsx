@@ -8,21 +8,26 @@ import MiddlePart from "../homeComponent/MiddlePart";
 import ReelsPage from "../PageComponent/ReelsPage";
 import CreateReels from "../PageComponent/CreateReels";
 import ProfilePage from "../PageComponent/ProfilePage";
+import Notification from "./Notification";
+import Message from "./Message";
 
 const AppRouter = () => {
   return (
     <>
-      {/* <Navbar /> */}
       <Toaster position="top-right" reverseOrder={false} />
       <Routes>
-        <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/middle" element={<MiddlePart />} />
-        <Route path="/reels" element={<ReelsPage />} />
-        <Route path="/create-reels" element={<CreateReels />} />
-        <Route path="/profile/:id" element={<ProfilePage />} />
+
+        {/* Main layout routes */}
+        <Route path="/" element={<HomePage />}>
+          <Route index element={<MiddlePart />} />
+          <Route path="reels" element={<ReelsPage />} />
+          <Route path="create-reels" element={<CreateReels />} />
+          <Route path="notifications" element={<Notification />} />
+          <Route path="message" element={<Message />} />
+          <Route path="profile" element={<ProfilePage />} />
+        </Route>
       </Routes>
     </>
   );
