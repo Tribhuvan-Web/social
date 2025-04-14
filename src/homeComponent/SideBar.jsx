@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { navigationMenu } from "../Components/SidebarNavigation";
 import { PiDotsThreeOutline } from "react-icons/pi";
+import { useGetUserName } from "../useQuery";
+import { useStoreContext } from "../contextApi/ContextApi";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const SideBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,6 +12,22 @@ const SideBar = () => {
 
   const handleOpen = () => setIsOpen(!isOpen);
   const handleClose = () => setIsOpen(false);
+
+  const { token } = useStoreContext();
+
+  const mainNavigate = useNavigate();
+
+  const profileHandler = () => {
+    mainNavigate("/profile");
+    handleClose();
+  };
+
+  const logoutHandler = () => {
+    localStorage.removeItem("JWT_TOKEN");
+    window.location.reload();
+  };
+
+  const { data: username } = useGetUserName(token);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -24,6 +43,7 @@ const SideBar = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
+
   return (
     <div className="h-screen text-white flex flex-col justify-between sticky top-0 p-6 w-64">
       <div className="mb-12 pl-3">
@@ -55,8 +75,8 @@ const SideBar = () => {
             <span className="text-sm">U</span>
           </div>
           <div>
-            <p className="text-sm font-medium">User Name</p>
-            <p className="text-xs text-gray-400">@username</p>
+            <p className="text-sm font-medium">{username}</p>
+            <p className="text-xs text-gray-400">@{username}</p>
           </div>
           <div className="flex flex-col justify-end " ref={triggerRef}>
             <button
@@ -73,19 +93,13 @@ const SideBar = () => {
               >
                 <div className="py-1">
                   <button
-                    onClick={handleClose}
+                    onClick={profileHandler}
                     className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-left"
                   >
                     Profile
                   </button>
                   <button
-                    onClick={handleClose}
-                    className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-left"
-                  >
-                    My Account
-                  </button>
-                  <button
-                    onClick={handleClose}
+                    onClick={logoutHandler}
                     className="block w-full px-4 py-2 text-sm text-red-600 hover:bg-gray-100 text-left"
                   >
                     Logout

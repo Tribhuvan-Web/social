@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoIosAdd, IoMdVideocam } from "react-icons/io";
 import PostCard from "./PostCard";
+import CreatePostModal from "../postComponent/CreatePostModal";
 
 const MiddlePart = () => {
   const stories = [1, 2, 3, 4, 5, 6];
 
   const handleOpenCreateModel = () => {
     console.log("Open create model");
+  };
+
+  const [openCreatePostModal, setOpenCreatePostModal] = useState(false);
+
+  const handleClose = () => {
+    setOpenCreatePostModal(false);
+  };
+
+  const handleOpen = () => {
+    setOpenCreatePostModal(true);
   };
 
   return (
@@ -55,8 +66,10 @@ const MiddlePart = () => {
         {/* Create Post Section */}
         <section className="flex flex-col md:flex-row gap-4 items-center mt-8 w-full">
           {/* Author and Input */}
-          <div className="flex items-center gap-4 w-full md:flex-1">
-            <div className="h-10 w-10 rounded-full bg-gray-700 shrink-0" />
+          <div
+            className="flex items-center gap-4 w-full md:flex-1"
+            onClick={handleOpen}
+          >
             <input
               type="text"
               placeholder="Create a post"
@@ -100,6 +113,7 @@ const MiddlePart = () => {
         <div className="mt-5 space-y-5">
           <PostCard />
         </div>
+        <CreatePostModal handleClose={handleClose} open={openCreatePostModal} />
       </div>
     </>
   );

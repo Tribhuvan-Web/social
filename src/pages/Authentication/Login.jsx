@@ -37,7 +37,7 @@ const Login = () => {
       localStorage.setItem("JWT_TOKEN", JSON.stringify(response.token));
       toast.success("Login successful!");
       reset();
-      navigate("/home");
+      navigate("/");
     } catch (error) {
       if (error.response && error.response.data) {
         toast.error(

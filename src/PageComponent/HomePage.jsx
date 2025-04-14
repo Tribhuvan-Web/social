@@ -2,10 +2,16 @@ import React from "react";
 import SideBar from "../homeComponent/SideBar";
 import { Outlet, useLocation, useMatch } from "react-router-dom";
 import HomeRight from "../homeComponent/HomeRight";
+import { useSelector } from "react-redux";
+import { useStoreContext } from "../contextApi/ContextApi";
 
 const HomePage = () => {
   const isHome = useMatch("/");
   const location = useLocation();
+
+  const { auth } = useStoreContext();
+
+  console.log(auth);
 
   return (
     <div className="px-5 bg-black">

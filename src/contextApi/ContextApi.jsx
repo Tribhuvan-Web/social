@@ -8,6 +8,8 @@ export const ContextProvider = ({ children }) => {
     : null;
 
   const [token, setToken] = useState(getToken);
+  const [user,setUser] = useState(null);
+
 
   return (
     <ContextApi.Provider value={{ token, setToken }}>

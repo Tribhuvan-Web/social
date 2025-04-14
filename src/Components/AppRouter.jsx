@@ -10,23 +10,87 @@ import CreateReels from "../PageComponent/CreateReels";
 import ProfilePage from "../PageComponent/ProfilePage";
 import Notification from "./Notification";
 import Message from "./Message";
+import PrivateRouter from "../Router/PrivateRouter";
 
 const AppRouter = () => {
   return (
     <>
       <Toaster position="top-right" reverseOrder={false} />
       <Routes>
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/register"
+          element={
+            <PrivateRouter publicPage={true}>
+              <Register />
+            </PrivateRouter>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <PrivateRouter publicPage={true}>
+              <Login />
+            </PrivateRouter>
+          }
+        />
 
         {/* Main layout routes */}
-        <Route path="/" element={<HomePage />}>
-          <Route index element={<MiddlePart />} />
-          <Route path="reels" element={<ReelsPage />} />
-          <Route path="create-reels" element={<CreateReels />} />
-          <Route path="notifications" element={<Notification />} />
-          <Route path="message" element={<Message />} />
-          <Route path="profile" element={<ProfilePage />} />
+        <Route
+          path="/"
+          element={
+            <PrivateRouter publicPage={false}>
+              <HomePage />
+            </PrivateRouter>
+          }
+        >
+          <Route
+            index
+            element={
+              <PrivateRouter publicPage={false}>
+                <MiddlePart />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="reels"
+            element={
+              <PrivateRouter publicPage={false}>
+                <ReelsPage />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="create-reels"
+            element={
+              <PrivateRouter publicPage={false}>
+                <CreateReels />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="notifications"
+            element={
+              <PrivateRouter publicPage={false}>
+                <Notification />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="message"
+            element={
+              <PrivateRouter publicPage={false}>
+                <Message />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path="profile"
+            element={
+              <PrivateRouter publicPage={false}>
+                <ProfilePage />
+              </PrivateRouter>
+            }
+          />
         </Route>
       </Routes>
     </>
